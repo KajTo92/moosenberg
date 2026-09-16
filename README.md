@@ -23,12 +23,12 @@ pnpm start
 
 ## Assets
 
-- Video: `public/video/moosenberg-experience.mp4` (already supplied, approximately 18.73 seconds, 1920×1080).
+- Video: `public/video/Moosenberg-scroll.mp4` (approximately 28.78 seconds).
 - Poster: `public/images/moosenberg-poster.webp` (extracted from the supplied film).
 - Elevator background: `public/images/buttons.jpg` (1672 x 941).
 - Illuminated elevator overlays: `public/images/button1.png` through `button4.png`, plus `buttonug.png`.
 - Floor plan currently available: `public/images/stock3.jpg`, mapped to level `03`.
-- Browser paths omit `public`: `/video/moosenberg-experience.mp4` and `/images/moosenberg-poster.webp`.
+- Browser paths omit `public`: `/video/Moosenberg-scroll.mp4` and `/images/moosenberg-poster.webp`.
 
 Keep the MP4 seek-friendly, with frequent keyframes and fast-start metadata. Serve byte-range requests and the correct MIME type. Replacing the film does not require changing duration constants: the controller waits for loaded metadata. Re-tune story timing against any replacement film. The original video is unchanged.
 
@@ -36,9 +36,9 @@ Keep the MP4 seek-friendly, with frequent keyframes and fast-start metadata. Ser
 
 `src/features/cinematic-experience/config/story.ts` owns copy, normalized beat intervals, asset paths, and scroll parameters.
 
-- `desktopScrollScreens: 5.5`: 550vh of scroll travel plus the 100svh stage.
-- `mobileScrollScreens: 3.2`: 320vh of travel plus the stage.
-- `filmEnd: 0.82`: the film finishes at 82% of scroll travel. The remainder holds the last decoded frame.
+- `desktopScrollScreens: 8.5`: 850vh of scroll travel plus the 100svh stage.
+- `mobileScrollScreens: 5`: 500vh of travel plus the stage.
+- `filmEnd: 0.86`: the film finishes at 86% of scroll travel. The remainder holds the last decoded frame.
 - `elevatorStart` / `elevatorInteractive`: interface fade and interaction thresholds in overall scroll progress.
 - Beat `start` / `end` refer to normalized **film** progress; they remain independent of scroll length and video duration.
 

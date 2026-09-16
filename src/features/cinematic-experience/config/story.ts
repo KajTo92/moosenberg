@@ -8,14 +8,14 @@ export type StoryBeat = {
   align?: 'left' | 'center' | 'right';
 };
 export const cinematicConfig = {
-  video: '/video/moosenberg-experience.mp4',
+  video: '/video/Moosenberg-scroll.mp4',
   poster: '/images/moosenberg-poster.webp',
-  // Scroll travel in viewport heights; the final 18% holds the elevator frame.
-  desktopScrollScreens: 5.5,
-  mobileScrollScreens: 3.2,
-  filmEnd: 0.82,
-  elevatorStart: 0.8,
-  elevatorInteractive: 0.88,
+  // Scroll travel follows the longer 28.8-second film; the ending holds the elevator frame.
+  desktopScrollScreens: 8.5,
+  mobileScrollScreens: 5,
+  filmEnd: 0.86,
+  elevatorStart: 0.84,
+  elevatorInteractive: 0.92,
   seekTolerance: 1 / 30,
   seekTimeoutMs: 8000,
 };
@@ -23,7 +23,7 @@ export const storyBeats: StoryBeat[] = [
   {
     id: 'arrival',
     start: 0,
-    end: 0.16,
+    end: 0.22,
     eyebrow: 'Moosenberg 12 · Switzerland',
     title: 'A NEW PERSPECTIVE\nON LIVING.',
     body: 'Move-in April 2027',
@@ -31,19 +31,19 @@ export const storyBeats: StoryBeat[] = [
   },
   {
     id: 'approach',
-    start: 0.14,
-    end: 0.36,
+    start: 0.19,
+    end: 0.49,
     title: 'CALM\nBY DESIGN.',
     body: 'Four floors. Open landscapes. A quieter way to live.',
     align: 'left',
   },
   {
     id: 'interior',
-    start: 0.38,
-    end: 0.72,
+    start: 0.46,
+    end: 0.82,
     title: 'DESIGNED FROM\nTHE INSIDE OUT.',
     body: 'Light. Space. Perspective.',
     align: 'left',
   },
-  { id: 'elevator', start: 0.84, end: 0.94, eyebrow: 'Explore the building', align: 'center' },
+  { id: 'elevator', start: 0.84, end: 0.98, eyebrow: 'Explore the building', align: 'center' },
 ];
