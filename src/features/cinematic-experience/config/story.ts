@@ -8,7 +8,7 @@ export type StoryBeat = {
   align?: 'left' | 'center' | 'right';
 };
 export const cinematicConfig = {
-  video: '/video/Moosenberg-scroll.mp4',
+  video: '/video/Moosenberg-scroll-kf2.mp4',
   poster: '/images/moosenberg-poster.webp',
   // Scroll travel follows the longer 28.8-second film; the ending holds the elevator frame.
   desktopScrollScreens: 8.5,
