@@ -23,12 +23,12 @@ pnpm start
 
 ## Assets
 
-- Video: `public/video/Moosenberg-scroll-kf2.mp4` (approximately 28.78 seconds, keyframe every 2 frames).
+- Video: `public/video/Moosenberg-scroll-kf2-HQ.mp4` (approximately 28.78 seconds, keyframe every 2 frames).
 - Poster: `public/images/moosenberg-poster.webp` (extracted from the supplied film).
 - Elevator background: `public/images/buttons.jpg` (1672 x 941).
 - Illuminated elevator overlays: `public/images/button1.png` through `button4.png`, plus `buttonug.png`.
 - Floor plan currently available: `public/images/stock3.jpg`, mapped to level `03`.
-- Browser paths omit `public`: `/video/Moosenberg-scroll-kf2.mp4` and `/images/moosenberg-poster.webp`.
+- Browser paths omit `public`: `/video/Moosenberg-scroll-kf2-HQ.mp4` and `/images/moosenberg-poster.webp`.
 
 Keep the MP4 seek-friendly, with frequent keyframes and fast-start metadata. Serve byte-range requests and the correct MIME type. Replacing the film does not require changing duration constants: the controller waits for loaded metadata. Re-tune story timing against any replacement film. The original video is unchanged.
 
