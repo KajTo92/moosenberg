@@ -188,6 +188,7 @@ button:active {
   --elevator-opacity: 0;
   --elevator-image-opacity: 0;
   --video-opacity: 1;
+  --transition-white-opacity: 0;
   --film-shade: 0.12;
   height: calc((var(--scroll-screens) + 1) * 100svh);
   background: #353e35;
@@ -218,6 +219,15 @@ button:active {
   background: url('/images/buttons.jpg') 73.92% center / cover no-repeat;
   opacity: var(--elevator-image-opacity);
   transition: opacity 0.12s linear;
+}
+.film-transition {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: #f8f8f5;
+  opacity: var(--transition-white-opacity);
+  will-change: opacity;
 }
 .film-scrim {
   position: absolute;

@@ -102,6 +102,7 @@ export function CinematicExperience({
             </dialog>
           )}
         </div>
+        <div className="film-transition" aria-hidden="true" />
         <div className={`experience-footer${interactive ? ' is-final' : ''}`}>
           <span className={`experience-caption${interactive ? ' is-final' : ''}`}>
             {interactive

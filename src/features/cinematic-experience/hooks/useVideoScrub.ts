@@ -70,9 +70,17 @@ export function useVideoScrub(
             (progress - config.elevatorStart) / (config.elevatorInteractive - config.elevatorStart),
           );
           const easedReveal = revealEase(reveal);
+          const whiteOpacity =
+            reveal < 0.4
+              ? revealEase(reveal / 0.4)
+              : reveal <= 0.6
+                ? 1
+                : revealEase((1 - reveal) / 0.4);
+          const imageReveal = revealEase(clamp((reveal - 0.42) / 0.16));
           section.style.setProperty('--elevator-opacity', String(easedReveal));
-          section.style.setProperty('--elevator-image-opacity', String(easedReveal));
-          section.style.setProperty('--video-opacity', String(1 - easedReveal));
+          section.style.setProperty('--elevator-image-opacity', String(imageReveal));
+          section.style.setProperty('--video-opacity', String(1 - imageReveal));
+          section.style.setProperty('--transition-white-opacity', String(whiteOpacity));
           section.style.setProperty('--film-shade', String(0.12 - reveal * 0.07));
           if (progressLine) progressLine.style.transform = `scaleX(${progress})`;
           activate(progress >= config.elevatorInteractive);
