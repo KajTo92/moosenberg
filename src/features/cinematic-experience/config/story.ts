@@ -17,7 +17,6 @@ export const cinematicConfig = {
   elevatorStart: 0.84,
   elevatorInteractive: 0.92,
   seekTolerance: 1 / 30,
-  seekTimeoutMs: 8000,
 };
 export const storyBeats: StoryBeat[] = [
   {

@@ -36,7 +36,7 @@ export function CinematicExperience({
           className="experience-video"
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={cinematicConfig.poster}
           disablePictureInPicture
           aria-hidden="true"

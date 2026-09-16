@@ -33,8 +33,7 @@ export function useVideoScrub(
           failed = false,
           progress = 0,
           raf = 0,
-          lastSeek = 0,
-          seekingSince = 0;
+          lastSeek = 0;
         let active = false;
         const revealEase = gsap.parseEase(motion.reveal);
         const beats = section.querySelectorAll<HTMLElement>('[data-story-beat]');
@@ -89,28 +88,19 @@ export function useVideoScrub(
           raf = 0;
           if (disposed || failed || reduced || document.hidden) return;
           if (media.seeking) {
-            if (seekingSince && now - seekingSince > config.seekTimeoutMs) {
-              fallback();
-              return;
-            }
             raf = requestAnimationFrame(tick);
             return;
           }
-          seekingSince = 0;
           if (Number.isFinite(media.duration) && media.readyState >= 1) {
             const target = videoTime(progress, media.duration, config.filmEnd);
             const delta = target - media.currentTime;
             if (Math.abs(delta) > config.seekTolerance) {
-              if (now - lastSeek >= (mobile ? 50 : 32)) {
-                // Coalesce rapid scroll input; don't interrupt an in-flight decode.
-                const next =
-                  Math.abs(delta) < 0.08 || progress >= config.filmEnd
-                    ? target
-                    : media.currentTime + delta * 0.55;
+              if (now - lastSeek >= (mobile ? 32 : 16)) {
+                // The film has a keyframe every two frames, so seek directly to the
+                // newest scroll position as soon as the previous decode completes.
                 try {
-                  media.currentTime = next;
+                  media.currentTime = target;
                   lastSeek = now;
-                  seekingSince = now;
                 } catch {
                   fallback();
                   return;
@@ -160,9 +150,6 @@ export function useVideoScrub(
           media.removeAttribute('src');
           media.load();
         }
-        const readinessTimeout = window.setTimeout(() => {
-          if (media.readyState < 2) fallback();
-        }, 15000);
         skipRef.current = () => {
           if (reduced || failed) {
             trigger?.kill();
@@ -187,7 +174,6 @@ export function useVideoScrub(
         paint();
         return () => {
           disposed = true;
-          clearTimeout(readinessTimeout);
           cancelAnimationFrame(raf);
           trigger?.kill();
           media.removeEventListener('loadedmetadata', ready);
